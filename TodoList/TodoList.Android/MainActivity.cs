@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Acr.UserDialogs;
 
 namespace TodoList.Droid
 {
@@ -21,6 +22,7 @@ namespace TodoList.Droid
 
             base.OnCreate(savedInstanceState);
 
+            UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));
@@ -36,8 +38,7 @@ namespace TodoList.Droid
         {
             public void RegisterTypes(IContainerRegistry containerRegistry)
             {
-              
-
+                containerRegistry.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Acr.UserDialogs;
 using Foundation;
 using Prism;
 using Prism.Ioc;
@@ -34,7 +34,7 @@ namespace TodoList.iOS
         {
             public void RegisterTypes(IContainerRegistry containerRegistry)
             {
-                
+                containerRegistry.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
             }
         }
     }
