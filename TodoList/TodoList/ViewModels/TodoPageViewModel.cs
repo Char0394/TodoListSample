@@ -33,7 +33,7 @@ namespace TodoList.ViewModels
             var result= await _userDialogs.PromptAsync("Insert Item");
             if (!string.IsNullOrEmpty(result.Text))
             {
-                await _todoDB.SaveItemAsync(new Item() { Text = result.Text });
+                await _todoDB.SaveItemAsync(new Item() { Text = result.Text, Status= Helpers.TodoStatus.Pending });
                 GetItemsCommand.Execute();
             }
         });
