@@ -1,6 +1,10 @@
 ﻿using Prism;
 using Prism.Ioc;
 using Prism.Unity;
+using TodoList.Constants;
+using TodoList.ViewModels;
+using TodoList.Views;
+using Xamarin.Forms;
 
 namespace TodoList
 {
@@ -12,13 +16,14 @@ namespace TodoList
         {
             InitializeComponent();
 
-           // NavigationService.NavigateAsync(new System.Uri("", System.UriKind.Absolute));
+            NavigationService.NavigateAsync(new System.Uri(NavConstants.TodoView, System.UriKind.Absolute));
 
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<TodoPage, TodoPageViewModel>();
         }
     }
 }
