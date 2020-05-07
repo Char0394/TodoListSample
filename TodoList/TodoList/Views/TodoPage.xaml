@@ -9,7 +9,21 @@
                      Order="Primary"
                      Priority="0" />
     </ContentPage.ToolbarItems>
-
-    <ContentPage.Content>
-    </ContentPage.Content>
+     <ListView  ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      IsDestructive="True"/>
+                            <MenuItem Text="Done" />
+                        </ViewCell.ContextActions>
+                      
+                        <Label Text="{Binding Text}"
+                                VerticalOptions="Center"
+                                TextColor="#503026" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+     </ListView>
 </ContentPage>
