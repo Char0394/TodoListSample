@@ -9,19 +9,33 @@
                      Order="Primary"
                      Priority="0" />
     </ContentPage.ToolbarItems>
-     <ListView  ItemsSource="{Binding Items}">
+     <ListView  ItemsSource="{Binding Items}"
+                HasUnevenRows="True"
+                x:Name="MainList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem Text="Delete"
+                                      Command="{Binding Path=BindingContext.DeleteItemCommand ,Source={x:Reference MainList}}"
+                                      CommandParameter="{Binding .}"
                                       IsDestructive="True"/>
-                            <MenuItem Text="Done" />
+                            <MenuItem Text="Update"
+                                       Command="{Binding Path=BindingContext.UpdateItemStatus ,Source={x:Reference MainList}}"
+                                       CommandParameter="{Binding .}"/>
                         </ViewCell.ContextActions>
-                      
                         <Label Text="{Binding Text}"
-                                VerticalOptions="Center"
-                                TextColor="#503026" />
+                               Margin="20"
+                               TextColor="LightSeaGreen"
+                                VerticalOptions="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                                Binding="{Binding Status}"
+                                                Value="Completed">
+                                    <Setter Property="TextDecorations" Value="Strikethrough" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

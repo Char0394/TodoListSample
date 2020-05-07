@@ -1,8 +1,9 @@
-﻿using TodoList.Helpers;
+﻿using System.ComponentModel;
+using TodoList.Helpers;
 
 namespace TodoList.Models
 {
-    public class Item
+    public class Item: INotifyPropertyChanged
     {
         public Item(string text)
         {
@@ -10,5 +11,7 @@ namespace TodoList.Models
         }
         public string Text { get; set; }
         public TodoStatus Status { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

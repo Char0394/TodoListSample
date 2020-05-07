@@ -27,6 +27,17 @@ namespace TodoList.ViewModels
                 Items.Add(new Item(result.Text));
             }
         });
+
+        public DelegateCommand<Item> DeleteItemCommand => new DelegateCommand<Item>(async (param) =>
+        {
+            Items.Remove(param);
+        });
+
+        public DelegateCommand<Item> UpdateItemStatus => new DelegateCommand<Item>(async (param) =>
+        {
+            param.Status=(param.Status == Helpers.TodoStatus.Completed) ? Helpers.TodoStatus.Pending : Helpers.TodoStatus.Completed;
+        });
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
