@@ -2,6 +2,7 @@
 using Prism.Ioc;
 using Prism.Unity;
 using TodoList.Constants;
+using TodoList.Services;
 using TodoList.ViewModels;
 using TodoList.Views;
 using Xamarin.Forms;
@@ -24,6 +25,7 @@ namespace TodoList
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<TodoPage, TodoPageViewModel>();
+            containerRegistry.Register<ITodoDB, TodoDB>();
         }
     }
 }

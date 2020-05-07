@@ -20,7 +20,7 @@
                                       Command="{Binding Path=BindingContext.DeleteItemCommand ,Source={x:Reference MainList}}"
                                       CommandParameter="{Binding .}"
                                       IsDestructive="True"/>
-                            <MenuItem Text="Update"
+                            <MenuItem Text="Done"
                                        Command="{Binding Path=BindingContext.UpdateItemStatus ,Source={x:Reference MainList}}"
                                        CommandParameter="{Binding .}"/>
                         </ViewCell.ContextActions>
